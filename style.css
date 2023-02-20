@@ -29,10 +29,13 @@ body {
   width: 28rem;
   border-radius: 7px;
   background: #fff;
+  transition: all 1s ease;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 
 .container header {
-  color: #00b4d8;
+  color: #2980b9;
   font-size: 21px;
   font-weight: 500;
   padding: 16px 15px;
@@ -98,6 +101,7 @@ header i {
 .input input {
   border: 1px solid #bfbfbf;
   text-align: center;
+  box-shadow: rgba(127, 127, 127, 0.35) 0px -50px 36px -28px inset;
 }
 
 .input input:is(:focus, :valid) {
@@ -138,8 +142,11 @@ header i {
     #6dd5fa,
     #2980b9
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow: rgba(127, 127, 127, 0.35) 0px -50px 36px -28px inset;
 }
-
+.input button:hover {
+  text-decoration: underline;
+}
 .container .weather {
   margin: 30px 0 0;
   display: none;
