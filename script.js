@@ -2,8 +2,10 @@ const container = document.querySelector(".container"),
   inputPart = document.querySelector(".input"),
   infoTxt = document.querySelector(".info-txt"),
   inputField = document.querySelector("input"),
-  locationBtn = document.querySelector("button");
+  locationBtn = document.querySelector("button"),
+  icon = document.querySelector(".container img");
 const myApikey = "422b97949e2d76a193e34a18e39f26b3";
+
 let api;
 inputField.addEventListener("keyup", (e) => {
   // if user pressed enter btn and input value is not empty
@@ -58,6 +60,19 @@ weatherDetails = (info) => {
     const country = info.sys.country;
     const { description, id } = info.weather[0];
     const { feels_like, humidity, temp } = info.main;
+
+    //let's pass the values to a particular html element
+    container.querySelector(".temp .num").textContent = Math.floor(
+      temp - 273.15
+    );
+    container.querySelector(".type").textContent = description;
+    container.querySelector(
+      ".location span"
+    ).textContent = `${city}, ${country}`;
+    container.querySelector(".temp .num-2").textContent = Math.floor(
+      feels_like - 273.15
+    );
+    container.querySelector(".humidity span").textContent = `${humidity}%`;
 
     infoTxt.classList.remove("pending", "error");
     container.classList.add("active");
