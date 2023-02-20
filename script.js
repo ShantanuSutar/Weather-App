@@ -53,7 +53,14 @@ weatherDetails = (info) => {
     infoTxt.textContent = `${inputField.value} is not a valid city name`;
     infoTxt.classList.replace("pending", "error");
   } else {
+    //geting required values from the API data
+    const city = info.name;
+    const country = info.sys.country;
+    const { description, id } = info.weather[0];
+    const { feels_like, humidity, temp } = info.main;
+
     infoTxt.classList.remove("pending", "error");
+    container.classList.add("active");
     console.log(info);
   }
 };
