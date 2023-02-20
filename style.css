@@ -42,13 +42,21 @@ body {
 }
 header i {
   cursor: pointer;
-  font-size: 30px;
+  font-size: 0px;
   margin-right: 8px;
 }
 
+.container.active header i {
+  font-size: 30px;
+  margin-left: 5px;
+}
+
 .container .input {
-  display: none;
   margin: 20px 25px 30px;
+}
+
+.container.active .input {
+  display: none;
 }
 
 .input .info-txt {
@@ -129,10 +137,14 @@ header i {
 
 .container .weather {
   margin: 30px 0 0;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.container.active .weather {
+  display: flex;
 }
 
 .weather img {
