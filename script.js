@@ -10,6 +10,8 @@ inputField.addEventListener("keyup", (e) => {
 
 requestApi = (city) => {
   let api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${myapi}`;
+  infoTxt.textContent = "Getting weather details... ";
+  infoTxt.classList.add("pending");
 
   //getting api response and returning it with parsing it into js object
   //Passing api result as an argument in weatherDetails function
