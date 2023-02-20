@@ -3,8 +3,8 @@ const container = document.querySelector(".container"),
   infoTxt = document.querySelector(".info-txt"),
   inputField = document.querySelector("input"),
   locationBtn = document.querySelector("button");
-const myapi = "422b97949e2d76a193e34a18e39f26b3";
-
+const myApikey = "422b97949e2d76a193e34a18e39f26b3";
+let api;
 inputField.addEventListener("keyup", (e) => {
   // if user pressed enter btn and input value is not empty
   if (e.key === "Enter" && inputField.value != "") requestApi(inputField.value);
@@ -21,7 +21,8 @@ locationBtn.addEventListener("click", () => {
 onSuccess = (position) => {
   // If request allowed we get the coordinates
   const { latitude, longitude } = position.coords;
-  console.log(latitude, longitude);
+  api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${myApikey}`;
+  fetchData();
 };
 
 onFailure = (error) => {
@@ -31,7 +32,11 @@ onFailure = (error) => {
 };
 
 requestApi = (city) => {
-  let api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${myapi}`;
+  api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${myApikey}`;
+  fetchData();
+};
+
+fetchData = () => {
   infoTxt.textContent = "Getting weather details... ";
   infoTxt.classList.add("pending");
 
@@ -44,5 +49,11 @@ requestApi = (city) => {
 };
 
 weatherDetails = (info) => {
-  console.log(info);
+  if (info.cod == "404") {
+    infoTxt.textContent = `${inputField.value} is not a valid city name`;
+    infoTxt.classList.replace("pending", "error");
+  } else {
+    infoTxt.classList.remove("pending", "error");
+    console.log(info);
+  }
 };
