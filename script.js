@@ -3,7 +3,8 @@ const container = document.querySelector(".container"),
   infoTxt = document.querySelector(".info-txt"),
   inputField = document.querySelector("input"),
   locationBtn = document.querySelector("button"),
-  icon = document.querySelector(".container img");
+  icon = document.querySelector(".container img"),
+  arrowBtn = document.querySelector("header i");
 const myApikey = "422b97949e2d76a193e34a18e39f26b3";
 
 let api;
@@ -87,3 +88,7 @@ weatherDetails = (info) => {
     console.log(info);
   }
 };
+
+arrowBtn.addEventListener("click", () => {
+  container.classList.remove("active");
+});
