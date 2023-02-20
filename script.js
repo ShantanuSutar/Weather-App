@@ -61,6 +61,14 @@ weatherDetails = (info) => {
     const { description, id } = info.weather[0];
     const { feels_like, humidity, temp } = info.main;
 
+    // using custom icons according to the fetched weather id
+    if (id == 800) icon.src = "icons/clear.svg";
+    else if (id >= 200 && id <= 232) icon.src = "icons/strom.svg";
+    else if (id >= 600 && id <= 622) icon.src = "icons/snow.svg";
+    else if (id >= 701 && id <= 781) icon.src = "icons/haze.svg";
+    else if (id >= 801 && id <= 804) icon.src = "icons/cloud.svg";
+    else if ((id >= 300 && id <= 321) || (id >= 500 && id <= 531))
+      icon.src = "icons/rain.svg";
     //let's pass the values to a particular html element
     container.querySelector(".temp .num").textContent = Math.floor(
       temp - 273.15
