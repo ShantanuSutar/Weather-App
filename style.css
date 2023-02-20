@@ -49,6 +49,11 @@ header i {
 .container.active header i {
   font-size: 30px;
   margin-left: 5px;
+  position: relative;
+  transition: all 0.5s;
+}
+.container.active header i:hover {
+  right: 5px;
 }
 
 .container .input {
